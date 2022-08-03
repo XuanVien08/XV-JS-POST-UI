@@ -2,12 +2,245 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post UI | Xuan Vien</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Posts UI</title>
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+
+    <!-- Bootstrap CSS 5.0.2 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+
+    <!-- Use font Rubik -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/home.css" />
   </head>
+
   <body>
-    <div id="app"></div>
-    <script type="module" src="./js/main.js"></script>
+    <!-- This is a template HTML for a post item -->
+    <template id="postItemTemplate">
+      <li class="col-12 col-md-6 col-lg-4">
+        <div class="post-item mb-4">
+          <div class="card">
+            <img data-id="thumbnail" src="images/recipe.jpg" class="card-img-top" alt="recipe" />
+
+            <div class="card-body">
+              <h5 data-id="title" class="card-title">Card title</h5>
+
+              <p data-id="description" class="card-text">
+                This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.
+              </p>
+
+              <p class="card-text">
+                <small class="text-muted">by</small>
+                <small data-id="author" class="text-muted font-weight-bold"> Hau Nguyen </small>
+                <small data-id="timeSpan" class="text-muted"> - 3 mins ago </small>
+              </p>
+            </div>
+          </div>
+
+          <div class="post-item-menu">
+            <div data-id="edit" class="menu-item rounded-circle" role="button">
+              <i class="fas fa-pen"></i>
+            </div>
+            <div data-id="remove" class="remove-button menu-item rounded-circle" role="button">
+              <i class="fas fa-trash"></i>
+            </div>
+          </div>
+        </div>
+      </li>
+    </template>
+
+    <header>
+      <!-- Navigation
+      - Please note that we use an empty item to make sure that we always have 3 flex-items
+        so logo is at centered, and the left and the right item can be optional by leaving it empty
+    -->
+      <nav class="top-nav shadow-sm py-3">
+        <div class="container">
+          <ul class="nav justify-content-between align-items-center">
+            <li class="nav-item">
+              <a class="nav__link" href="">
+                <img class="nav__logo" src="images/logo.svg" alt="Logo Nordic Coder" />
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav__link" href="add-edit-post.html"
+                ><i class="fas fa-plus-circle mr-1"></i>Add new post</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://picsum.photos/id/1010/1378/400" class="d-block w-100" alt="xv1" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://picsum.photos/id/1001/1378/400" class="d-block w-100" alt="xv2" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://picsum.photos/id/1005/1378/400" class="d-block w-100" alt="xv3" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <section class="posts-section">
+        <div class="container">
+          <h1 class="with-underline text-center">Latest posts</h1>
+
+          <!-- Posts list -->
+          <ul id="postsList" class="row posts-list justify-content-center">
+            <li class="col-12 col-md-6 col-lg-4">
+              <div class="post-item mb-4">
+                <div class="card">
+                  <img
+                    src="images/recipe.jpg"
+                    class="card-img-top"
+                    alt="recipe"
+                    onerror="this.onerror=null;this.src='https://picsum.photos/1368/400';"
+                  />
+
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+
+                    <p class="card-text">
+                      This is a wider card with supporting text below as a natural lead-in to
+                      additional content. This content is a little bit longer.
+                    </p>
+
+                    <p class="card-text">
+                      <small class="text-muted">by</small>
+                      <small class="text-muted font-weight-bold">Hau Nguyen</small>
+                      <small class="text-muted">- 3 mins ago</small>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="post-item-menu">
+                  <div class="menu-item rounded-circle">
+                    <i class="fas fa-pen"></i>
+                  </div>
+                  <div class="menu-item rounded-circle">
+                    <i class="fas fa-trash"></i>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Posts pagination -->
+          <nav class="posts-nav" aria-label="Posts navigation">
+            <ul hidden id="postsPagination" class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center text-muted py-3">
+      <small>Created by Po with <i class="fas fa-heart"></i></small>
+    </footer>
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Scripts should be placed here to prevent blocking render UI -->
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
