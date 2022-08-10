@@ -10,12 +10,20 @@ const postApi = {
   },
   add(data) {
     const url = '/posts';
-    return axiosClient.post(url, { data });
+    return axiosClient.post(url, data);
   },
   update(id) {
     const url = `/posts${id}`;
-    return axiosClient.patch(url, { data });
+    return axiosClient.patch(url, data);
   },
+
+  updateFromData(data) {
+    const url = `/posts${data.id}`;
+    return axiosClient.patch(url, data, {
+      headers: { 'Content-Type': 'multipart/from-data' },
+    });
+  },
+
   remove() {
     const url = `/posts${id}`;
     return axiosClient.delete(url);

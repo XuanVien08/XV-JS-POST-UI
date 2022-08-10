@@ -12,6 +12,8 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "dayjs": "^1.11.4",
+    "lodash.debounce": "^4.0.8"
   }
 }
