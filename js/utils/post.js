@@ -30,7 +30,27 @@ export function createPostElement(post) {
     });
   }
 
-  //todo: attach even
+  //todo: attach even and go to post detail when click on div.post-item
+  const divElement = liElement.firstElementChild;
+  if (divElement) {
+    divElement.addEventListener('click', (event) => {
+      //S2: if event is triggered from menu --> ignore
+      const menu = liElement.querySelector('[data-id="menu"]');
+      if (menu && menu.contains(event.target)) return;
+
+      window.location.assign(`/post-detail.html?id=${post.id}`);
+    });
+  }
+
+  const editButton = liElement.querySelector('[data-id="edit"]');
+  if (editButton) {
+    editButton.addEventListener('click', (event) => {
+      //S1 : prevent event  bubbling to parent
+      // event.stopPropagation();
+
+      window.location.assign(`/add-edit-post.html?id=${post.id}`);
+    });
+  }
 
   return liElement;
 }

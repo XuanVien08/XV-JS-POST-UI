@@ -35,9 +35,7 @@ a > i {
   transition: all 0.25s;
 }
 
-a:hover > i {
-  transform: rotate(90deg);
-}
+
 
 /* Add underline for all h1 */
 h1.with-underline {

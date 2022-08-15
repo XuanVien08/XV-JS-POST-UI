@@ -100,3 +100,6 @@
 .posts-nav .page-item:not(.active) .page-link:hover {
   color: var(--primary-color);
 }
+a:hover > i {
+  transform: rotate(90deg);
+}
