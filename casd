@@ -1,0 +1,38 @@
+[33mcommit d27cdd74ebaef88e96a0d8ba3d25c891d250a4a6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Xuân Viển <xuanvienn123@gmail.com>
+Date:   Mon Aug 15 20:05:04 2022 +0700
+
+    update Post-detail page
+
+[33mcommit b0aa2cf1a0fcfe964bcaf6b21c512ef2b19687aa[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Xuân Viển <xuanvienn123@gmail.com>
+Date:   Thu Aug 11 01:26:33 2022 +0700
+
+    update code
+
+[33mcommit 85653a6d57a58de3c2162c1a7e139dfd1f072c20[m
+Author: Xuân Viển <xuanvienn123@gmail.com>
+Date:   Sun Aug 7 00:00:01 2022 +0700
+
+    update api
+
+[33mcommit f163003407d696aec3fdca513525138ea5194b68[m
+Author: Xuân Viển <xuanvienn123@gmail.com>
+Date:   Thu Aug 4 01:25:15 2022 +0700
+
+    Add Carousel
+    
+    - Update Bootstrap CSS to V5
+    - Add bootstrap Js to home page
+
+[33mcommit 1690f03333d9bbb81000048542e56aebe5401da2[m
+Author: Xuân Viển <xuanvienn123@gmail.com>
+Date:   Wed Aug 3 17:06:45 2022 +0700
+
+    add readme
+
+[33mcommit 775f86db00f957b18f4c6f0809347543ef79fc5e[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Xuân Viển <xuanvienn123@gmail.com>
+Date:   Wed Aug 3 16:57:18 2022 +0700
+
+    init commit
