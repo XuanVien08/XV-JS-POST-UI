@@ -11,7 +11,6 @@ function setFormValue(form, formValues) {
 
 function getFormValues(form) {
   const formValues = {};
-
   //S1 : query each input and add to value object
   // ['title', 'author', 'description', 'imageUrl'].forEach((name) => {
   //   const field = form.querySelector(`[name="${name}"]`);

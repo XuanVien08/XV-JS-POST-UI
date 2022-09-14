@@ -42,12 +42,12 @@ export function createPostElement(post) {
     });
   }
 
+  // add click event for edit button
   const editButton = liElement.querySelector('[data-id="edit"]');
   if (editButton) {
     editButton.addEventListener('click', (event) => {
       //S1 : prevent event  bubbling to parent
       // event.stopPropagation();
-
       window.location.assign(`/add-edit-post.html?id=${post.id}`);
     });
   }
