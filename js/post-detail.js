@@ -19,6 +19,7 @@ function renderPostDetail(post) {
     '#postDetailTimeSpan',
     dayjs(post.updatedAt).format('- DD/MM/YYYY HH:mm')
   );
+
   //render hero image (imgURl)
   const heroImg = document.getElementById('postHeroImage');
   if (heroImg) {

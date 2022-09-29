@@ -23,6 +23,7 @@ export function initPagination({ elementId, defaultParams, onchange }) {
   //bind click event for prev/next link
   const ulPagination = document.getElementById(elementId);
   if (!ulPagination) return;
+  
   //add click event for previous link
   const preLink = ulPagination.firstElementChild?.firstElementChild;
   if (preLink) {

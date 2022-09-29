@@ -43,7 +43,11 @@
           <ul class="nav justify-content-between align-items-center">
             <li class="nav-item">
               <a class="nav__link" href=".">
-                <img class="nav__logo" src="images/logo.svg" alt="Logo Nordic Coder" />
+                <img
+                  class="nav__logo"
+                  src="./images/LOGO XV PHOTOGRAPH.png"
+                  alt="Logo Nordic Coder"
+                />
               </a>
             </li>
 
@@ -79,6 +83,7 @@
                   class="form-control"
                   name="title"
                   placeholder="Eg: Learning JS is fun"
+                  required
                 />
                 <div class="invalid-feedback">
                   Ooops! Please write a nice title for your post &gt;.&lt;
@@ -87,7 +92,13 @@
 
               <div class="form-group mb-3">
                 <label for="postAuthor">Author</label>
-                <input type="text" class="form-control" name="author" placeholder="Eg: Xuan Vien" />
+                <input
+                  type="text"
+                  class="form-control"
+                  name="author"
+                  placeholder="Eg: Xuan Vien"
+                  required
+                />
                 <div class="invalid-feedback">Please enter author of this post!</div>
               </div>
 
@@ -96,22 +107,66 @@
                 <textarea class="form-control" name="description" rows="3"></textarea>
               </div>
 
-              <div class="form-group mb-3">
+              <div class="mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="imageSource"
+                    id="imageSourcePicksum"
+                    checked
+                    value="picsum"
+                  />
+                  <label class="form-check-label" for="imageSourcePicksum">
+                    Random image using Picsum.photos
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="imageSource"
+                    id="imageSourceUpload"
+                    value="upload"
+                  />
+                  <label class="form-check-label" for="imageSourceUpload">
+                    Upload image from your computer
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group mb-3" data-id="imageSource" data-image-source="picsum">
                 <label for="postChangeImage">Image</label>
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   We&apos;re using
                   <a href="https://picsum.photos">Picsum service</a> to get a random image.
                 </small>
-                <input type="hidden" name="imageUrl" />
+                <input type="text" name="imageUrl" class="d-none" />
                 <div>
                   <button type="button" id="postChangeImage" class="btn btn-dark">
                     Change post image
                   </button>
                 </div>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <div class="input-group mb-3" data-id="imageSource" data-image-source="upload" hidden>
+                <input
+                  name="image"
+                  type="file"
+                  class="form-control"
+                  id="uploadImage"
+                  accept="image/*"
+                />
+                <label class="input-group-text" for="uploadImage">Upload</label>
+                <div class="invalid-feedback"></div>
               </div>
 
               <div class="text-center">
-                <button class="btn btn-primary"><i class="fas fa-save mr-1"></i> Save</button>
+                <button name="submit" class="btn btn-primary">
+                  <i class="fas fa-save mr-1"></i> Save
+                </button>
               </div>
             </form>
           </div>
@@ -120,7 +175,7 @@
     </main>
 
     <footer class="text-center text-muted py-3">
-      <small>Created by Po with <i class="fas fa-heart"></i></small>
+      <small>Created by XV with <i class="fas fa-heart"></i></small>
     </footer>
     <!-- Bootstrap -->
     <script

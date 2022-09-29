@@ -35,8 +35,6 @@ a > i {
   transition: all 0.25s;
 }
 
-
-
 /* Add underline for all h1 */
 h1.with-underline {
   position: relative;
@@ -68,7 +66,7 @@ ul {
 }
 
 .nav .nav__logo {
-  height: 40px;
+  height: 100px;
   width: auto;
 }
 

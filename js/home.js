@@ -6,6 +6,7 @@ async function handleFilterChange(filterName, filterValue) {
     // update query Params
     const url = new URL(window.location);
     url.searchParams.set(filterName, filterValue);
+    
     //reset page if needed
     if (filterName === 'title_like') url.searchParams.set('_page', 1);
     history.pushState({}, '', url);
