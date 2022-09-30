@@ -1,9 +1,4 @@
-function showModal(modalElement) {
-  //make sure bootstrap script is loaded
-  if (!window.bootstrap) return;
-  const modal = new window.bootstrap.Modal(modalElement);
-  if (modal) modal.show();
-}
+import { showModal } from './common'; 
 
 export function registerLightBox({ modalId, imgSelector, prevSelector, nextSelector }) {
   const modalElement = document.getElementById(modalId);

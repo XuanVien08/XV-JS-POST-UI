@@ -26,3 +26,9 @@ export function randomNumber(n) {
   const random = Math.random() * n;
   return Math.round(random);
 }
+export function showModal(modalElement) {
+  //make sure bootstrap script is loaded
+  if (!window.bootstrap) return;
+  const modal = new window.bootstrap.Modal(modalElement);
+  if (modal) modal.show();
+}

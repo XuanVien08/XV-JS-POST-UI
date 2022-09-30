@@ -104,12 +104,29 @@ async function validatePostForm(form, formValues) {
       }
     }
   }
-
   //* add was-validated class to form element
   const isValid = form.checkValidity();
 
   if (!isValid) form.classList.add('was-validated');
   return isValid;
+}
+
+async function validateFormField(form, formValues, name) {
+  try {
+    //clear previous errors
+    setFieldError(form, name, '');
+    //start validating
+    const schema = getPostSchema();
+    await schema.validateAt(name, formValues);
+  } catch (error) {
+    setFieldError(form, name, error.message);
+  }
+
+  //show validation error (if any)
+  const field = form.querySelector(`[name="${name}"]`);
+  if (field && !field.checkValidity()) {
+    field.parentElement.classList.add('was-validated');
+  }
 }
 
 function showLoading(form) {
@@ -166,6 +183,28 @@ function initUploadImage(form) {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setBackgroundImage(document, '#postHeroImage', imageUrl);
+
+      //trigger validation of upload input
+      validateFormField(
+        form,
+        {
+          imageUrl: ImageSource.UPLOAD,
+          image: file,
+        },
+        'image'
+      );
+    }
+  });
+}
+
+function initValidationOnChange(form) {
+  ['title', 'author'].forEach((name) => {
+    const field = form.querySelector(`[name="${name}"]`);
+    if (field) {
+      field.addEventListener('input', (event) => {
+        const newValue = event.target.value;
+        validateFormField(form, { [name]: newValue }, name);
+      });
     }
   });
 }
@@ -183,6 +222,7 @@ export function initPostForm({ formId, defaultValue, onchange }) {
   initRandomImage(form);
   initRadioImageSource(form);
   initUploadImage(form);
+  initValidationOnChange(form);
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -190,8 +230,8 @@ export function initPostForm({ formId, defaultValue, onchange }) {
     // Prevent order submission
     if (submitting) return;
 
-    showLoading(form);
     submitting = true;
+    showLoading(form);
     //todo: get form value
     const formValues = getFormValues(form);
     //* set id form for edit post form

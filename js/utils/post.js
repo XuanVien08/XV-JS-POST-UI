@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { setTextContent, truncateText } from '../utils';
+import { setTextContent, truncateText, showModal } from '../utils';
 dayjs.extend(relativeTime);
 
 export function createPostElement(post) {
@@ -49,6 +49,21 @@ export function createPostElement(post) {
       //S1 : prevent event  bubbling to parent
       // event.stopPropagation();
       window.location.assign(`/add-edit-post.html?id=${post.id}`);
+    });
+  }
+
+  // add click event for remove button
+  const removeButton = liElement.querySelector('[data-id="remove"]');
+  if (removeButton) {
+    removeButton.addEventListener('click', (event) => {
+      const modalElement = document.getElementById('removePost');
+      showModal(modalElement);
+      const customEvent = new CustomEvent('post-delete', {
+        bubbles: true,
+        detail: post,
+      });
+
+      removeButton.dispatchEvent(customEvent);
     });
   }
 
